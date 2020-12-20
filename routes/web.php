@@ -54,6 +54,22 @@ Route::get(('/recent-posts/{days_ago?}'), function($daysAgo = 20){
 })->name('posts.recent.index');
 
 
+Route::get('/fun/redirect', function(){
+    return redirect('/contact');
+}); 
+
+Route::get('/fun/back', function(){
+    return back();
+}); 
+
+Route::get('/fun/named-route', function(){
+    return redirect()->route('posts.show', ['id' => 1]);
+}); 
+
+Route::get('/fun/away', function(){
+    return redirect()->away('http://www.google.com');
+}); 
+
 Route::get('/fun/responses', function() use($posts){
     //201 = OK | 404 = SERVICE NOT FOUND | 500 = INTERNAL SERVER ERROR
     return response($posts, 201)
